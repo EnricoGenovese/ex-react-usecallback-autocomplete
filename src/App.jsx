@@ -1,11 +1,12 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import './App.css'
+import debounce from './debounce';
 
 function App() {
   const [query, setQuery] = useState('');
   const [products, setProducts] = useState([]);
 
-  const fetchProducts = async (query) => {
+  const fetchProducts = useCallback(debounce(async (query) => {
     if (query.trim() === '') {
       setProducts([]);
       return;
@@ -17,7 +18,7 @@ function App() {
     } catch (err) {
       console.error(err)
     }
-  }
+  }, 350), [])
 
   useEffect(() => {
     fetchProducts(query)
