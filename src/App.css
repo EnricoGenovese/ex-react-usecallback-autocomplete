@@ -1,0 +1,11 @@
+ul {
+    background-color: lightgrey;
+    list-style-type: none;
+    max-height: 200px;
+    overflow-y: scroll;
+}
+
+li {
+    font-size: 26px;
+    margin: 5px 0;
+}
